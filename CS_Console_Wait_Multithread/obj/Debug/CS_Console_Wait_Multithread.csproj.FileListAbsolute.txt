@@ -1,0 +1,5 @@
+C:\Users\jashliao\Desktop\CS_Console_Wait_Multithread\CS_Console_Wait_Multithread\bin\Debug\CS_Console_Wait_Multithread.exe
+C:\Users\jashliao\Desktop\CS_Console_Wait_Multithread\CS_Console_Wait_Multithread\bin\Debug\CS_Console_Wait_Multithread.pdb
+C:\Users\jashliao\Desktop\CS_Console_Wait_Multithread\CS_Console_Wait_Multithread\obj\Debug\CS_Console_Wait_Multithread.csprojResolveAssemblyReference.cache
+C:\Users\jashliao\Desktop\CS_Console_Wait_Multithread\CS_Console_Wait_Multithread\obj\Debug\CS_Console_Wait_Multithread.exe
+C:\Users\jashliao\Desktop\CS_Console_Wait_Multithread\CS_Console_Wait_Multithread\obj\Debug\CS_Console_Wait_Multithread.pdb
