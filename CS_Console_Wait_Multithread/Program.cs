@@ -17,7 +17,7 @@ namespace CS_Console_Wait_Multithread
         {
             int i = 0;
             int threadCount = 0;
-            int threadAmount = 10;//執行序總量
+            int threadAmount = 27;//執行序總量
             //---
             //ArrayList 物件陣列初始化
             ALCInupt = new ArrayList[threadAmount];
@@ -58,15 +58,32 @@ namespace CS_Console_Wait_Multithread
                     th_C[threadCount].Start(threadCount);
                 }
 
-
+                bool blncheck = false;
                 do
                 {
                     Thread.Sleep(100);
-                } while ( (th_C[threadCount].IsAlive) && (th_C[(threadCount-1)].IsAlive) );
+                    blncheck = false;
+                    if ((threadCount - 1)< threadAmount)
+                    {
+                        blncheck |= th_C[(threadCount - 1)].IsAlive;
+                    }
+                    if (threadCount < threadAmount)
+                    {
+                        blncheck |= th_C[threadCount].IsAlive;
+                    }
+                } while (blncheck);
 
-                string []buf01 = ALCOutput[threadCount][(ALCOutput[threadCount].Count - 1)].ToString().Split(';');
-                string[] buf02 = ALCOutput[(threadCount - 1)][(ALCOutput[(threadCount - 1)].Count - 1)].ToString().Split(';');
-                intAns += Convert.ToInt32(buf01[1]) + Convert.ToInt32(buf02[1]);
+                
+                if (threadCount < threadAmount)
+                {
+                    string[] buf01 = ALCOutput[threadCount][(ALCOutput[threadCount].Count - 1)].ToString().Split(';');
+                    intAns += Convert.ToInt32(buf01[1]);
+                }
+                if ((threadCount - 1) < threadAmount)
+                {
+                    string[] buf02 = ALCOutput[(threadCount - 1)][(ALCOutput[(threadCount - 1)].Count - 1)].ToString().Split(';');
+                    intAns += Convert.ToInt32(buf02[1]);
+                }
                 Console.WriteLine("{0} threads finish...", (threadCount+1));
 
                 threadCount++;
@@ -83,7 +100,7 @@ namespace CS_Console_Wait_Multithread
                 data = Convert.ToInt32(ALCInupt[index][i].ToString());
                 sum += data;
                 ALCOutput[index].Add(data + ";" + sum);
-                Thread.Sleep(100);
+                Thread.Sleep(10);
             }
         }
         public static void Pause()
@@ -120,7 +137,7 @@ namespace CS_Console_Wait_Multithread
                 Wait();
             }while (th_M.IsAlive);
             Console.Clear();
-            Console.WriteLine("1+2+3+...+100={0}", intAns);
+            Console.WriteLine("1+2+3+...+270={0}", intAns);
 
             Pause();
         }
